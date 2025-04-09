@@ -5,13 +5,13 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 import json
 import tempfile
+load_dotenv()
 
 gcloud_key_json = os.getenv("GCLOUD_KEY_JSON")
 with tempfile.NamedTemporaryFile(delete=False, suffix=".json") as tmp_file:
     tmp_file.write(gcloud_key_json.encode())
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = tmp_file.name
 
-load_dotenv()
 
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
